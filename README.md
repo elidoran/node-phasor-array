@@ -29,6 +29,12 @@ This allows expanding third party modules by adding your own phases and function
 
 ### phasor.add(object)
 
+Used to both add a phase and add a function to a phase.
+
+You may add a phase and add a function to it at the same time.
+
+Instead of specifying a single object argument you may specify a string for the first argument as the `id` and optionally a function as the second argument.
+
 #### Add a Phase
 
 ```javascript
@@ -55,6 +61,13 @@ var fn = function() {} # some function
 // specify the phase via the `id` property.
 // specify the function via the `fn` property
 phasor.add({ id: 'phase name', fn:fn })
+
+// add a new phase and add a function to it at the same time
+phasor.add({ id: 'new phase', before:'phase name', fn:fn })
+
+// use individual arguments
+// NOTE: you can't specify after/before values using this style
+phasor.add('third phase', fn)
 ```
 
 
